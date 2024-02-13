@@ -622,6 +622,7 @@ fill: #fff;
 
 .modal-field {
   margin-bottom: 8px;
+  display: block;
 }
 
 .comment-field {
@@ -683,7 +684,8 @@ fill: #fff;
 }
 .modal-field-policy {
   margin-bottom: 24px;
-  /* display: flex; */
+  /* display: block; */
+  
 }
 
 .modal-icon {
@@ -695,19 +697,17 @@ fill: #fff;
 }
 .check-text {
   font-size: 12px;
-  line-height: 117%;
+  line-height: 1.17;
   letter-spacing: 0.04em;
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 24px;
-  white-space: pre;
+  /* white-space: pre; */
   color: #8e8f99;
+  display: block;
 }
 
 .link-policy {
   text-decoration: underline;
   color: #4d5ae5;
-}
+} 
 
 .privacy-policy {
   width: 16px;
@@ -746,7 +746,7 @@ fill: #fff;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button-submit:hover {
+.button-submit:hover, .button-submit:focus {
   background-color: #404bbf;
 }
 
