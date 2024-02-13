@@ -497,9 +497,9 @@ footer .link-icon:focus {
 .subscribe-btn {
   display: flex;
   align-items: center;
-  width: 165px;
+  justify-content: center;
+  min-width: 165px;
   height: 40px;
-  gap: 16px;
   padding: 8px 24px;
   background-color: #4d5ae5;
   color: #fff;
@@ -519,30 +519,52 @@ height: 40px;
 border: 1px solid #fff;
 border-radius: 4px;
 box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
-background-color: #2e2f42;
-padding: 8px 24px;
-margin-right: 16px;
+background-color: transparent;
+color: #fff;
+font-size: 12px;
+line-height: 2;
+letter-spacing: 0.04em;
+margin-top: 16px;
+padding-left: 16px;
 }
 
 .subscribe-email::placeholder {
   color: #fff;
 }
 
-.subscribe-item{
+.form-subscribe{
   display: flex;
+  gap: 24px;
+  align-items: end;
   
 }
+
+.svg-submit {
+  margin-left: 16px;
+}
+
+.subscribe-email-description {
+  
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #fff;
+    
+  }
 /* ==================================================================================================== */
 
 .backdrop {
     position: fixed;
     background-color: rgba(46, 47, 66, 0.4);
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .is-open {
@@ -556,31 +578,46 @@ margin-right: 16px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 584px;
+    min-height: 584px;
     width:  408px;
     border-radius: 4px;
-    background-color: #fcfcfc;
+    background: #fcfcfc;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.2);background-color: #fff;
-    padding: 24px;
+    padding: 72px 24px 24px 24px;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close {
-    width: 24px;
-    height: 24px;
-    border-radius: 500%;
-    padding: 0;
-    background-color: #e7e9fc;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: block;
-    margin-left: auto;
-    margin-right: 0;
-    margin-bottom: 24px;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    /* display: block;
+    margin-left: auto; */
+  /* margin-right: 0; */
+  /* margin-bottom: 24px; */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close:active {
-  fill: #fff;
-  background-color: #4d5ae5;
+.modal-close:hover, .modal-close:focus {
+  border: none;
+  background-color: #404bbf;
+}
+
+.modal-svg-close {
+transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close:hover .modal-svg-close, .modal-close:focus .modal-svg-close {
+fill: #fff;
 }
 
 .modal-title {
@@ -596,6 +633,11 @@ margin-right: 16px;
 .modal-field {
   margin-bottom: 8px;
 }
+
+.comment-field {
+  margin-bottom: 16px;
+}
+
 .modal-input-wrap {
   position: relative;
 }
@@ -606,8 +648,11 @@ margin-right: 16px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   padding-left: 38px;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 .modal-input:focus {
   border-color: #4d5ae5;
@@ -630,7 +675,6 @@ margin-right: 16px;
 .comment {
   width: 100%;
   height: 120px;
-  margin-bottom: 8px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   border-radius: 4px;
   resize: none;
@@ -638,11 +682,17 @@ margin-right: 16px;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+  background-color: transparent;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .comment:focus{ 
   border-color: #4d5ae5;
-  outline: transparent;
+}
+.modal-field-policy {
+  margin-bottom: 24px;
 }
 
 .modal-icon {
@@ -650,7 +700,7 @@ margin-right: 16px;
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .check-text {
   font-size: 12px;
@@ -660,14 +710,15 @@ margin-right: 16px;
   align-items: center;
   margin-bottom: 24px;
   white-space: pre;
+  color: #8e8f99;
 }
 
 .link-policy {
   text-decoration: underline;
-  color: #404bbf;
+  color: #4d5ae5;
 }
 
-.check-text span {
+.privacy-policy {
   width: 16px;
   height: 16px;
   border: 1px solid rgba(46, 47, 66, 0.4);
@@ -678,7 +729,7 @@ margin-right: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-check:checked + .check-text span {
@@ -687,16 +738,24 @@ margin-right: 16px;
   border: none;
 }
 
-.button-submit{
+.button-submit {
   display: block;
   border-radius: 4px;
   padding: 16px 32px;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   background: #4d5ae5;
   color: #fff;
   margin: 0 auto;
   border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-submit:hover {
+  background-color: #404bbf;
 }
 
